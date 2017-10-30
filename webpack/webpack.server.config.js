@@ -17,7 +17,8 @@ module.exports = {
           presets: ['latest-minimal', 'react']
         }
       }
-    ]
+    ],
+    exprContextCritical: false,
   },
   target: 'node',
 };
