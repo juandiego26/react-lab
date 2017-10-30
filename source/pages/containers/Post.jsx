@@ -5,7 +5,7 @@ class Post extends Component {
   render() {
     return (
       <section name="post">
-        <h1>About</h1>
+        <h1>Post</h1>
         <Link to="/">
           Go to Home
         </Link>

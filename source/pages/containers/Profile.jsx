@@ -5,7 +5,7 @@ class Profile extends Component {
   render() {
     return (
       <section name="profile">
-        <h1>About</h1>
+        <h1>Profile</h1>
         <Link to="/">
           Go to Home
         </Link>
