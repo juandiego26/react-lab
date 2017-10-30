@@ -312,7 +312,7 @@ module.exports = invariant;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * 
+ *
  */
 
 function makeEmptyFunction(arg) {
@@ -1407,7 +1407,7 @@ module.exports = hyphenateStyleName;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * 
+ *
  * @typechecks static-only
  */
 
@@ -2083,7 +2083,7 @@ var checkPropTypes = __webpack_require__(13);
  * LICENSE file in the root directory of this source tree.
  *
  * @providesModule reactProdInvariant
- * 
+ *
  */
 
 {
@@ -2369,7 +2369,7 @@ var ReactBaseClasses = {
  * LICENSE file in the root directory of this source tree.
  *
  * @providesModule ReactCurrentOwner
- * 
+ *
  */
 
 /**
@@ -2719,7 +2719,7 @@ var ReactElement_1 = ReactElement;
  * LICENSE file in the root directory of this source tree.
  *
  * @providesModule ReactDebugCurrentFrame
- * 
+ *
  */
 
 var ReactDebugCurrentFrame = {};
@@ -3084,7 +3084,7 @@ var onlyChild_1 = onlyChild;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * 
+ *
  * @providesModule describeComponentFrame
  */
 
@@ -3099,7 +3099,7 @@ var describeComponentFrame$1 = function (name, source, ownerName) {
  * LICENSE file in the root directory of this source tree.
  *
  * @providesModule getComponentName
- * 
+ *
  */
 
 function getComponentName$1(instanceOrFiber) {
@@ -3896,7 +3896,7 @@ var stream = __webpack_require__(23);
  * LICENSE file in the root directory of this source tree.
  *
  * @providesModule reactProdInvariant
- * 
+ *
  */
 
 /**
@@ -4734,7 +4734,7 @@ var dangerousStyleValue_1 = dangerousStyleValue;
  * LICENSE file in the root directory of this source tree.
  *
  * @providesModule isCustomComponent
- * 
+ *
  */
 
 function isCustomComponent(tagName, props) {
@@ -4769,7 +4769,7 @@ var isCustomComponent_1 = isCustomComponent;
  * LICENSE file in the root directory of this source tree.
  *
  * @providesModule getComponentName
- * 
+ *
  */
 
 function getComponentName$2(instanceOrFiber) {
@@ -4817,7 +4817,7 @@ var ReactGlobalSharedState_1 = ReactGlobalSharedState;
  * LICENSE file in the root directory of this source tree.
  *
  * @providesModule ReactTypeOfWork
- * 
+ *
  */
 
 var ReactTypeOfWork = {
@@ -4840,7 +4840,7 @@ var ReactTypeOfWork = {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * 
+ *
  * @providesModule describeComponentFrame
  */
 
