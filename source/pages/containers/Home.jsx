@@ -1,6 +1,8 @@
 import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
+
 import api from '../../api.js';
+import Loading from '../../shared/components/Loading.jsx';
 import Post from '../../posts/containers/Post.jsx';
 
 class Home extends Component {
@@ -12,6 +14,8 @@ class Home extends Component {
       posts: [],
       loading: true,
     };
+
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   async componentDidMount() {
@@ -21,6 +25,39 @@ class Home extends Component {
       page: this.state.page + 1,
       loading: false,
     })
+
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll(event) {
+    if (this.state.loading) return null;
+
+    const scrolled = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const fullHeight = document.documentElement.clientHeight;
+
+    if (!(scrolled + viewportHeight + 300 >= fullHeight)) {
+      null;
+    }
+
+    this.setState({ loading: true }, async() => {
+      try {
+        const posts = await api.posts.getList(this.state.page);
+
+        this.setState({
+          posts: this.state.posts.concat(posts),
+          page: this.state.page + 1,
+          loading: false,
+        });
+      } catch (error) {
+        console.error(error);
+        this.setState({ loading: false })
+      }
+    })
   }
 
   render() {
@@ -28,16 +65,13 @@ class Home extends Component {
       <section name="Home">
         <h1>Home</h1>
         <section>
-          {this.state.loading && (
-            <h2>loading posts...</h2>
-          )}
           {this.state.posts
             .map(post => <Post key={post.id} {...post} />)
           }
+          {this.state.loading && (
+            <Loading />
+          )}
         </section>
-        <Link to="/about">
-          Go to About
-        </Link>
       </section>
     );
   }

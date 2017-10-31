@@ -58,5 +58,5 @@ typings/
 .env
 
 # Built project files
-built/server/index.js
 built/statics/app.js
+built/server/index.js
