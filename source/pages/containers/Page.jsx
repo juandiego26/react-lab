@@ -7,11 +7,14 @@ import {
 import Home from './Home.jsx';
 import Post from './Post.jsx';
 import Profile from './Profile.jsx'
+import Header from '../../shared/components/Header.jsx';
 import Error404 from './Error404.jsx';
 
 function Pages() {
   return (
     <main role="application">
+      <Header />
+
       <Switch>
         {/*Nuestro home es la lista de los post*/}
         <Route

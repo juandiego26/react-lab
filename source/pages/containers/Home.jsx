@@ -5,6 +5,8 @@ import api from '../../api.js';
 import Loading from '../../shared/components/Loading.jsx';
 import Post from '../../posts/containers/Post.jsx';
 
+import styles from './Page.css'
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -62,9 +64,8 @@ class Home extends Component {
 
   render() {
     return (
-      <section name="Home">
-        <h1>Home</h1>
-        <section>
+      <section name="Home" className={styles.section}>
+        <section className={styles.list}>
           {this.state.posts
             .map(post => <Post key={post.id} {...post} />)
           }
