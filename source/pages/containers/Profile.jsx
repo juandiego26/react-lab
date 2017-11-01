@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Post from '../../posts/containers/Post.jsx';
 import Loading from '../../shared/components/Loading.jsx';
 import api from '../../api.js';
+import styles from './Page.css';
 
 class Profile extends Component {
   constructor(props) {
@@ -40,13 +41,13 @@ class Profile extends Component {
       <section name="profile">
         <h2>Profile of {this.state.user.name}</h2>
 
-        <fieldset>
+        <fieldset className={styles.field}>
           <legend>Basic info</legend>
           <input type="email" value={this.state.user.email || ''} disabled />
         </fieldset>
 
         {this.state.user.address && (
-          <fieldset>
+          <fieldset className={styles.field}>
             <legend>Adress</legend>
             <address>
               {this.state.user.address.street}<br />
@@ -56,7 +57,7 @@ class Profile extends Component {
             </address>
           </fieldset>
         )}
-        <section>
+        <section className={styles.list}>
           {this.state.posts
             .map(post => (
               <Post

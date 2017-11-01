@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import api from '../../api.js';
 import Loading from '../../shared/components/Loading.jsx';
 import Post from '../../posts/containers/Post.jsx';
+import Title from '../../shared/components/Title.jsx';
 
 import styles from './Page.css'
 
@@ -65,6 +66,9 @@ class Home extends Component {
   render() {
     return (
       <section name="Home" className={styles.section}>
+        <Title>
+          Hola
+        </Title>
         <section className={styles.list}>
           {this.state.posts
             .map(post => <Post key={post.id} {...post} />)

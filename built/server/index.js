@@ -1903,7 +1903,7 @@ var _api = __webpack_require__(15);
 
 var _api2 = _interopRequireDefault(_api);
 
-var _Post = __webpack_require__(123);
+var _Post = __webpack_require__(112);
 
 var _Post2 = _interopRequireDefault(_Post);
 
@@ -2646,7 +2646,7 @@ var _Page = __webpack_require__(80);
 
 var _Page2 = _interopRequireDefault(_Page);
 
-var _Layout = __webpack_require__(118);
+var _Layout = __webpack_require__(120);
 
 var _Layout2 = _interopRequireDefault(_Layout);
 
@@ -11529,11 +11529,11 @@ var _Profile = __webpack_require__(116);
 
 var _Profile2 = _interopRequireDefault(_Profile);
 
-var _Header = __webpack_require__(112);
+var _Header = __webpack_require__(117);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Error = __webpack_require__(117);
+var _Error = __webpack_require__(119);
 
 var _Error2 = _interopRequireDefault(_Error);
 
@@ -11600,7 +11600,11 @@ var _Post = __webpack_require__(30);
 
 var _Post2 = _interopRequireDefault(_Post);
 
-var _Page = __webpack_require__(125);
+var _Title = __webpack_require__(129);
+
+var _Title2 = _interopRequireDefault(_Title);
+
+var _Page = __webpack_require__(113);
 
 var _Page2 = _interopRequireDefault(_Page);
 
@@ -11665,6 +11669,11 @@ class Home extends _react.Component {
     return _react2.default.createElement(
       'section',
       { name: 'Home', className: _Page2.default.section },
+      _react2.default.createElement(
+        _Title2.default,
+        null,
+        'Hola'
+      ),
       _react2.default.createElement(
         'section',
         { className: _Page2.default.list },
@@ -15078,65 +15087,17 @@ Request.prototype.clone = function() {
 
 /***/ }),
 /* 112 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(5);
-
-var _Header = __webpack_require__(113);
-
-var _Header2 = _interopRequireDefault(_Header);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Header() {
-  return _react2.default.createElement(
-    'header',
-    { className: _Header2.default.header },
-    _react2.default.createElement(
-      'h1',
-      { className: _Header2.default.title },
-      'Mi primera app con React'
-    ),
-    _react2.default.createElement(
-      'nav',
-      { role: 'navigation', className: _Header2.default.navigation },
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/', className: _Header2.default.link },
-        'Home'
-      ),
-      _react2.default.createElement(
-        'a',
-        {
-          className: _Header2.default.link,
-          href: 'https://platzi.com/',
-          target: '_blank'
-        },
-        'Plazi'
-      )
-    )
-  );
-}
-
-exports.default = Header;
+// removed by extract-text-webpack-plugin
+module.exports = {"post":"_3JQwMRwjAPCdCYkDHr5XjY","title":"_1u0-rHcH5uIaBJpPX7c8SS","meta":"_3GZs2BXZEUtnHSV80Di-rJ"};
 
 /***/ }),
 /* 113 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"header":"drWyG9k3xNlp6i9xgC9S1","title":"_1PGRrQ-JzqagQe0vO5_fw8","navigation":"_24vuKwSX7nLQNAtoDeKMn4","link":"EMKmSBN1egAsi5Ec2X8qo"};
+module.exports = {"section":"_3LDtgJCsIavRuTNszXxpTP","list":"_2FSpz7mEAeuochm2cigmSq","main":"_1vf_OiLP8VgAHovTVOI1HJ","field":"m4PqPtCeyAc6c3kKF3bK5","appear":"_3-vJFfv9mbvb_1fWb5jVVT","appearActive":"_3YY3UcQLEewLd1ul-8FS3a","enter":"_2QTgMQogscrxbXLrwxZEgi","enterActive":"_1y2dw5KKfvegFu0EMuV6CX","leave":"xB3uFdKl-ckewYqTfkjfl","leaveActive":"_2NOf4uKqimq_gSWoeFVoYg"};
 
 /***/ }),
 /* 114 */
@@ -15237,15 +15198,19 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Comment = __webpack_require__(127);
+
+var _Comment2 = _interopRequireDefault(_Comment);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Comment(props) {
   return _react2.default.createElement(
     'article',
-    { id: `comment-${props.id}` },
+    { id: `comment-${props.id}`, className: _Comment2.default.comment },
     _react2.default.createElement(
       'div',
-      null,
+      { className: _Comment2.default.meta },
       'By: ',
       _react2.default.createElement(
         'a',
@@ -15255,7 +15220,7 @@ function Comment(props) {
     ),
     _react2.default.createElement(
       'p',
-      null,
+      { className: _Comment2.default.meta },
       props.body
     )
   );
@@ -15293,6 +15258,10 @@ var _Loading2 = _interopRequireDefault(_Loading);
 var _api = __webpack_require__(15);
 
 var _api2 = _interopRequireDefault(_api);
+
+var _Page = __webpack_require__(113);
+
+var _Page2 = _interopRequireDefault(_Page);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15332,7 +15301,7 @@ class Profile extends _react.Component {
       ),
       _react2.default.createElement(
         'fieldset',
-        null,
+        { className: _Page2.default.field },
         _react2.default.createElement(
           'legend',
           null,
@@ -15342,7 +15311,7 @@ class Profile extends _react.Component {
       ),
       this.state.user.address && _react2.default.createElement(
         'fieldset',
-        null,
+        { className: _Page2.default.field },
         _react2.default.createElement(
           'legend',
           null,
@@ -15363,7 +15332,7 @@ class Profile extends _react.Component {
       ),
       _react2.default.createElement(
         'section',
-        null,
+        { className: _Page2.default.list },
         this.state.posts.map(post => _react2.default.createElement(_Post2.default, _extends({
           key: post.id,
           user: this.state.user
@@ -15377,6 +15346,68 @@ exports.default = Profile;
 
 /***/ }),
 /* 117 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(5);
+
+var _Header = __webpack_require__(118);
+
+var _Header2 = _interopRequireDefault(_Header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Header() {
+  return _react2.default.createElement(
+    'header',
+    { className: _Header2.default.header },
+    _react2.default.createElement(
+      'h1',
+      { className: _Header2.default.title },
+      'Mi primera app con React'
+    ),
+    _react2.default.createElement(
+      'nav',
+      { role: 'navigation', className: _Header2.default.navigation },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/', className: _Header2.default.link },
+        'Home'
+      ),
+      _react2.default.createElement(
+        'a',
+        {
+          className: _Header2.default.link,
+          href: 'https://platzi.com/',
+          target: '_blank'
+        },
+        'Plazi'
+      )
+    )
+  );
+}
+
+exports.default = Header;
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"header":"drWyG9k3xNlp6i9xgC9S1","title":"_1PGRrQ-JzqagQe0vO5_fw8","navigation":"_24vuKwSX7nLQNAtoDeKMn4","link":"EMKmSBN1egAsi5Ec2X8qo"};
+
+/***/ }),
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15416,7 +15447,7 @@ class Error404 extends _react.Component {
 exports.default = Error404;
 
 /***/ }),
-/* 118 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15475,23 +15506,68 @@ function Layout(props) {
 exports.default = Layout;
 
 /***/ }),
-/* 119 */,
-/* 120 */,
 /* 121 */,
 /* 122 */,
-/* 123 */
+/* 123 */,
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"post":"_3JQwMRwjAPCdCYkDHr5XjY","title":"_1u0-rHcH5uIaBJpPX7c8SS","meta":"_3GZs2BXZEUtnHSV80Di-rJ"};
+module.exports = {"comment":"_3LjLfWpCboel4kTSQVPNL","meta":"_1wJUwOYGArd9LLtDeQiXO9","body":"_2-ngX4Vf5dTU2mlVRVSRUB"};
 
 /***/ }),
-/* 124 */,
-/* 125 */
+/* 128 */,
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Title = __webpack_require__(130);
+
+var _Title2 = _interopRequireDefault(_Title);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Title(props) {
+  return _react2.default.createElement(
+    'h2',
+    { className: _Title2.default.title },
+    props.children
+  );
+}
+
+Title.defaultProps = {
+  children: null
+};
+
+Title.propTypes = {
+  children: _propTypes2.default.node
+};
+
+exports.default = Title;
+
+/***/ }),
+/* 130 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"section":"_3LDtgJCsIavRuTNszXxpTP","list":"_2FSpz7mEAeuochm2cigmSq"};
+module.exports = {"title":"_3e_mtYfjw3xXjce-UlF5GG"};
 
 /***/ })
 /******/ ]);
