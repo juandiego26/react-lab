@@ -5,7 +5,7 @@ const baseURL = 'https://jsonplaceholder.typicode.com';
 const api = {
   posts: {
     async getList(page = 1) {
-      const  response = await fetch(`${baseURL}/posts?_page=${page}`);
+      const response = await fetch(`${baseURL}/posts?_page=${page}`);
       const data = await response.json();
       return data;
     },
@@ -30,7 +30,7 @@ const api = {
       const response = await fetch(`${baseURL}/posts/?userId=${id}`);
       const data = await response.json();
       return data;
-    }
+    },
   },
 };
 

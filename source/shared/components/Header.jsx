@@ -8,7 +8,7 @@ function Header() {
       <h1 className={styles.title}>
         Mi primera app con React
       </h1>
-      <nav role="navigation" className={styles.navigation}>
+      <nav role="presentation" className={styles.navigation}>
         <Link to="/" className={styles.link}>
           Home
         </Link>
@@ -16,12 +16,13 @@ function Header() {
           className={styles.link}
           href="https://platzi.com/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Plazi
         </a>
       </nav>
     </header>
-  )
+  );
 }
 
 export default Header;

@@ -1,9 +1,9 @@
-import React, { Component} from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import Post from '../../posts/containers/Post.jsx';
-import Loading from '../../shared/components/Loading.jsx';
-import api from '../../api.js';
+import Post from '../../posts/containers/Post';
+import Loading from '../../shared/components/Loading';
+import api from '../../api';
 import styles from './Page.css';
 
 class Profile extends Component {
@@ -17,13 +17,17 @@ class Profile extends Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.initialFetch();
+  }
+
+  async initialFetch() {
     const [
       user,
       posts,
     ] = await Promise.all([
-      api.users.getSingle(this.props.match.params.id),
-      api.users.getPosts(this.props.match.params.id),
+      api.users.getSingle(this.props.id),
+      api.users.getPosts(this.props.id),
     ]);
 
     this.setState({
@@ -35,7 +39,7 @@ class Profile extends Component {
 
   render() {
     if (this.state.loading) {
-      return <Loading />
+      return <Loading />;
     }
     return (
       <section name="profile">
@@ -72,5 +76,13 @@ class Profile extends Component {
     );
   }
 }
+
+Profile.defaultProps = {
+  id: 1,
+};
+
+Profile.propTypes = {
+  id: PropTypes.number,
+};
 
 export default Profile;

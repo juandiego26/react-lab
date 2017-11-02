@@ -2,14 +2,24 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './source/client.js',
+  entry: './source/client.jsx',
   output: {
     filename: 'app.js',
-    path: __dirname + './../built/statics',
+    path: path.resolve(__dirname, './../built/statics'),
   },
 
   module: {
     rules: [
+      {
+        test: /\.jsx?$/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        exclude: /(node_modules)/,
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
@@ -17,7 +27,7 @@ module.exports = {
         query: {
           presets: ['es2016', 'es2017', 'react'],
           plugins: ['transform-es2015-modules-commonjs'],
-        }
+        },
       },
       {
         test: /\.css$/,
@@ -29,9 +39,12 @@ module.exports = {
     ],
   },
   target: 'web',
+  resolve: {
+    extensions: ['.js', '.jsx', '.css'],
+  },
   plugins: [
     new ExtractTextPlugin({
-      filename:'../statics/styles.css',
+      filename: '../statics/styles.css',
     }),
   ],
 };

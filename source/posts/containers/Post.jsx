@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import api from '../../api.js';
+import api from '../../api';
 import styles from './Post.css';
 
 class Post extends Component {
@@ -15,7 +15,11 @@ class Post extends Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.initialFetch();
+  }
+
+  async initialFetch() {
     if (!!this.state.user && !!this.state.comments) return this.setState({ loading: false });
 
     const [
@@ -26,7 +30,7 @@ class Post extends Component {
       !this.state.comments ? api.posts.getComments(this.props.id) : Promise.resolve(null),
     ]);
 
-    this.setState({
+    return this.setState({
       loading: false,
       user: user || this.state.user,
       comments: comments || this.state.comments,
@@ -55,15 +59,30 @@ class Post extends Component {
           </div>
         )}
       </article>
-    )
+    );
   }
 }
 
 Post.propTypes = {
-  id: PropTypes.number,
-  userId: PropTypes.number,
+  id: PropTypes.number.isRequired,
+  userId: PropTypes.number.isRequired,
   title: PropTypes.string,
   body: PropTypes.string,
+  user: PropTypes.shape({
+    name: PropTypes.string,
+  }),
+  comments: PropTypes.arrayOf(
+    PropTypes.object,
+  ),
+};
+
+Post.defaultProps = {
+  title: '',
+  body: '',
+  user: {
+    name: null,
+  },
+  comments: null,
 };
 
 export default Post;

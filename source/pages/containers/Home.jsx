@@ -1,12 +1,11 @@
-import React, { Component} from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 
-import api from '../../api.js';
-import Loading from '../../shared/components/Loading.jsx';
-import Post from '../../posts/containers/Post.jsx';
-import Title from '../../shared/components/Title.jsx';
+import api from '../../api';
+import Loading from '../../shared/components/Loading';
+import Post from '../../posts/containers/Post';
+import Title from '../../shared/components/Title';
 
-import styles from './Page.css'
+import styles from './Page.css';
 
 class Home extends Component {
   constructor(props) {
@@ -22,13 +21,7 @@ class Home extends Component {
   }
 
   async componentDidMount() {
-    const posts = await api.posts.getList(this.state.page);
-    this.setState({
-      posts,
-      page: this.state.page + 1,
-      loading: false,
-    })
-
+    this.initialFetch();
     window.addEventListener('scroll', this.handleScroll);
   }
 
@@ -36,7 +29,16 @@ class Home extends Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll(event) {
+  async initialFetch() {
+    const posts = await api.posts.getList(this.state.page);
+    this.setState({
+      posts,
+      page: this.state.page + 1,
+      loading: false,
+    });
+  }
+
+  handleScroll() {
     if (this.state.loading) return null;
 
     const scrolled = window.scrollY;
@@ -44,10 +46,10 @@ class Home extends Component {
     const fullHeight = document.documentElement.clientHeight;
 
     if (!(scrolled + viewportHeight + 300 >= fullHeight)) {
-      null;
+      return null;
     }
 
-    this.setState({ loading: true }, async() => {
+    return this.setState({ loading: true }, async () => {
       try {
         const posts = await api.posts.getList(this.state.page);
 
@@ -58,9 +60,9 @@ class Home extends Component {
         });
       } catch (error) {
         console.error(error);
-        this.setState({ loading: false })
+        this.setState({ loading: false });
       }
-    })
+    });
   }
 
   render() {

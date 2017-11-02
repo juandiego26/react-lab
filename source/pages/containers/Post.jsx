@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import PostBody from '../../posts/containers/Post.jsx';
-import Loading from '../../shared/components/Loading.jsx';
-import Comment from '../../comments/components/Comment.jsx';
-import api from '../../api.js';
+import PostBody from '../../posts/containers/Post';
+import Loading from '../../shared/components/Loading';
+import Comment from '../../comments/components/Comment';
+import api from '../../api';
 
 class Post extends Component {
   constructor(props) {
@@ -17,13 +17,17 @@ class Post extends Component {
     });
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.initialFetch();
+  }
+
+  async initialFetch() {
     const [
       post,
       comments,
     ] = await Promise.all([
-      api.posts.getSingle(this.props.match.params.id),
-      api.posts.getComments(this.props.match.params.id),
+      api.posts.getSingle(this.props.id),
+      api.posts.getComments(this.props.id),
     ]);
 
     const user = await api.users.getSingle(post.userId);
@@ -59,5 +63,13 @@ class Post extends Component {
     );
   }
 }
+
+Post.defaultProps = {
+  id: 1,
+};
+
+Post.propTypes = {
+  id: PropTypes.number,
+};
 
 export default Post;
