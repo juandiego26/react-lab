@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import Post from '../../posts/containers/Post';
 import Loading from '../../shared/components/Loading';
+import Title from '../../shared/components/Title';
 import api from '../../api';
 import styles from './Page.css';
 
@@ -42,25 +44,35 @@ class Profile extends Component {
       return <Loading />;
     }
     return (
-      <section name="profile">
-        <h2>Profile of {this.state.user.name}</h2>
+      <section name="profile" className={styles.section}>
+        <Title>
+          <FormattedMessage
+            id="title.profile"
+            values={{
+              name: this.state.user.name,
+            }}
+          />
+        </Title>
 
-        <fieldset className={styles.field}>
-          <legend>Basic info</legend>
-          <input type="email" value={this.state.user.email || ''} disabled />
-        </fieldset>
-
-        {this.state.user.address && (
+        <section className={styles.main}>
           <fieldset className={styles.field}>
-            <legend>Adress</legend>
-            <address>
-              {this.state.user.address.street}<br />
-              {this.state.user.address.suite}<br />
-              {this.state.user.address.city}<br />
-              {this.state.user.address.zipcode}<br />
-            </address>
+            <FormattedMessage id="profile.field.basic" tagName="legend" />
+            <input type="email" value={this.state.user.email || ''} disabled />
           </fieldset>
-        )}
+
+          {this.state.user.address && (
+            <fieldset className={styles.field}>
+              <FormattedMessage id="profile.field.address" tagName="legend" />
+              <address>
+                {this.state.user.address.street}<br />
+                {this.state.user.address.suite}<br />
+                {this.state.user.address.city}<br />
+                {this.state.user.address.zipcode}<br />
+              </address>
+            </fieldset>
+          )}
+        </section>
+
         <section className={styles.list}>
           {this.state.posts
             .map(post => (

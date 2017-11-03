@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 
-import api from '../../api';
 import Loading from '../../shared/components/Loading';
 import Post from '../../posts/containers/Post';
 import Title from '../../shared/components/Title';
+import api from '../../api';
 
 import styles from './Page.css';
 
@@ -69,7 +70,7 @@ class Home extends Component {
     return (
       <section name="Home" className={styles.section}>
         <Title>
-          Hola
+          <FormattedMessage id="title.home" />
         </Title>
         <section className={styles.list}>
           {this.state.posts

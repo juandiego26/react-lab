@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
 import api from '../../api';
 import styles from './Post.css';
@@ -54,8 +55,16 @@ class Post extends Component {
               {this.state.user.name}
             </Link>
             <span className={styles.comments}>
-              Hay {this.state.comments.length} comentarios
+              <FormattedMessage
+                id="post.meta.comments"
+                values={{
+                  amount: this.state.comments.length,
+                }}
+              />
             </span>
+            <Link to={`/post/${this.props.id}`}>
+              <FormattedMessage id="post.meta.readMore" />
+            </Link>
           </div>
         )}
       </article>
@@ -64,11 +73,12 @@ class Post extends Component {
 }
 
 Post.propTypes = {
-  id: PropTypes.number.isRequired,
-  userId: PropTypes.number.isRequired,
+  id: PropTypes.number,
+  userId: PropTypes.number,
   title: PropTypes.string,
   body: PropTypes.string,
   user: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string,
   }),
   comments: PropTypes.arrayOf(
@@ -77,11 +87,11 @@ Post.propTypes = {
 };
 
 Post.defaultProps = {
-  title: '',
-  body: '',
-  user: {
-    name: null,
-  },
+  id: 1,
+  userId: 1,
+  title: 'Titulo',
+  body: 'Texto',
+  user: null,
   comments: null,
 };
 
