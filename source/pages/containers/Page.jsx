@@ -20,6 +20,7 @@ function Pages() {
         <Route
           path="/"
           exact
+          title="Home"
           component={Home}
         />
         {/* Detalle del articulo o post */}

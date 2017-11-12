@@ -10,7 +10,7 @@ function Header() {
       <h1 className={styles.title}>
         <FormattedMessage id="title" />
       </h1>
-      <nav role="presentation" className={styles.navigation}>
+      <nav rol="navigation" className={styles.navigation}>
         <Link to="/" className={styles.link}>
           <FormattedMessage id="header.nav.home" />
         </Link>

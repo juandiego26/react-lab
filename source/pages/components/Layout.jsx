@@ -13,11 +13,11 @@ function Layout(props) {
         />
         <link
           rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css"
+          href={`${props.domain}/styles.css`}
         />
         <link
           rel="stylesheet"
-          href="http://localhost:3001/styles.css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css"
         />
       </head>
       <body>
@@ -27,15 +27,20 @@ function Layout(props) {
             __html: props.content,
           }}
         />
-        <script src="http://localhost:3001/app.js" />
+        <script src={`${props.domain}/app.js`} />
       </body>
     </html>
   );
 }
 
+Layout.defaultProps = {
+  content: '',
+};
+
 Layout.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  content: PropTypes.string,
+  domain: PropTypes.string.isRequired,
 };
 
 export default Layout;

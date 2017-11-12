@@ -1,21 +1,26 @@
 import http from 'http';
 import React from 'react';
-import { renderToString, renderToStaticMarkup } from 'react-dom/server';
+import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
-import Pages from './pages/containers/Page';
-import Layout from './pages/components/Layout';
 
 import messages from './messages.json';
 
+import Layout from './pages/components/Layout';
+
+
+const domain = process.env.NODE_ENV === 'production'
+  ? 'https://juan-reactlab-sfs.now.sh'
+  : 'http://localhost:3001';
+
 function requestHandler(request, response) {
-  const locale = request.headers['accept-language'].indexOf('es') >= 0 ? 'es' : 'es';
+  const locale = request.headers['accept-language'].indexOf('es') >= 0 ? 'es' : 'en';
   const context = {};
 
-  const html = renderToString(
+  const html = ReactDOMServer.renderToStaticMarkup(
     <IntlProvider locale={locale} messages={messages[locale]}>
       <StaticRouter location={request.url} context={context}>
-        <Pages />
+        <Layout title="Aplicación" domain={domain} />
       </StaticRouter>
     </IntlProvider>,
   );
@@ -24,20 +29,13 @@ function requestHandler(request, response) {
 
   if (context.url) {
     response.writeHead(301, {
-      location: context.url,
+      Location: context.url,
     });
     response.end();
+  } else {
+    response.write(html);
+    response.end();
   }
-
-  response.write(
-    renderToStaticMarkup(
-      <Layout
-        title="Aplicación"
-        content={html}
-      />,
-    ),
-  );
-  response.end();
 }
 
 const server = http.createServer(requestHandler);

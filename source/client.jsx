@@ -1,9 +1,10 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
-import { addLocaleData, IntlProvider } from 'react-intl';
+
 import Pages from './pages/containers/Page';
 
 import messages from './messages.json';
