@@ -35,10 +35,11 @@ function Layout(props) {
 
 Layout.defaultProps = {
   content: '',
+  title: 'Aplicación',
 };
 
 Layout.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   content: PropTypes.string,
   domain: PropTypes.string.isRequired,
 };
