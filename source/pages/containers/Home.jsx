@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 
 import Loading from '../../shared/components/Loading';
 import Post from '../../posts/containers/Post';
 import Title from '../../shared/components/Title';
-import api from '../../api';
 import styles from './Page.css';
 import actions from '../../actions';
 
@@ -34,12 +34,7 @@ class Home extends Component {
   }
 
   async initialFetch() {
-    const posts = await api.posts.getList(this.props.page);
-
-    this.props.dispatch(
-      actions.setPost(posts),
-    );
-
+    await this.props.actions.postsNextPage();
     this.setState({ loading: false });
   }
 
@@ -56,12 +51,7 @@ class Home extends Component {
 
     return this.setState({ loading: true }, async () => {
       try {
-        const posts = await api.posts.getList(this.props.page);
-
-        this.props.dispatch(
-          actions.setPost(posts),
-        );
-
+        await this.props.actions.postsNextPage();
         this.setState({ loading: false });
       } catch (error) {
         console.error(error);
@@ -90,13 +80,13 @@ class Home extends Component {
 }
 
 Home.defaultProps = {
-  dispatch: null,
+  actions: null,
   posts: null,
   page: 1,
 };
 
 Home.propTypes = {
-  dispatch: PropTypes.func,
+  actions: PropTypes.objectOf(PropTypes.func),
   posts: PropTypes.arrayOf(PropTypes.object),
   page: PropTypes.number,
 };
@@ -104,14 +94,13 @@ Home.propTypes = {
 function mapStateToProps(state) {
   return {
     posts: state.posts.entities,
-    page: state.posts.page,
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(actions, dispatch),
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch),
+  };
+}
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
