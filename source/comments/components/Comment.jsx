@@ -2,12 +2,12 @@ import React from 'react';
 import { FormattedHTMLMessage } from 'react-intl';
 
 import PropTypes from 'prop-types';
-import styles from './Comment.css';
+// import styles from './Comment.css';
 
 function Comment(props) {
   return (
-    <article id={`comment-${props.id}`} className={styles.comment}>
-      <div className={styles.meta}>
+    <article id={`comment-${props.id}`}>
+      <div>
         <FormattedHTMLMessage
           id="comment.meta.author"
           values={{
@@ -17,7 +17,7 @@ function Comment(props) {
         />
       </div>
 
-      <p className={styles.meta}>
+      <p>
         {props.body}
       </p>
     </article>
